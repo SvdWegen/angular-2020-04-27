@@ -5,3 +5,25 @@ td img {
 .duur {
     background: lightsalmon;
 }
+
+.flex {
+    display: flex;
+}
+.flex > form:nth-child(1) {
+    margin-right: 50px;
+}
+
+input.ng-touched.ng-valid {
+    background: lightblue;
+    position: relative;
+}
+input.ng-touched.ng-invalid {
+    background: lightcoral;
+}
+button:disabled {
+    box-shadow: 0 0 10px 3px red;
+}
+button:disabled:after {
+    content: '❌';
+    display: block;
+}

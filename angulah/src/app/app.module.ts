@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CamelCasePipe } from './pipes/camel-case.pipe';
 
 @NgModule({
@@ -12,7 +12,8 @@ import { CamelCasePipe } from './pipes/camel-case.pipe';
   ],
   imports: [ // modules
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [], // services (dependency injection) & globale instellingen
   bootstrap: [AppComponent]

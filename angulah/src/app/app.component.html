@@ -1,33 +1,80 @@
+<div class="flex">
+  <form (submit)="addProductTemplateDriven()" #templateForm="ngForm">
+    <h2>Product toevoegen<br>(template-driven / FormsModule)</h2>
+    <ol>
+      <li>
+        <label for="input-product">Product:</label>
+        <input id="input-product"
+               [(ngModel)]="newProduct.product"
+               name="product"
+               required
+               pattern="^[a-zA-Z0-9 .-]+$"
+               #inputProduct="ngModel"> <!-- custom validations: Angular directive -->
+        <span *ngIf="inputProduct.touched && inputProduct.invalid">*</span>
+        <span *ngIf="inputProduct.touched && inputProduct.errors?.required">Vul
+          dit veld in</span>
+        <span *ngIf="inputProduct.touched && inputProduct.errors?.pattern">Alleen
+          letters, cijfers en normale tekens graag</span>
+      </li>
+      <li>
+        <label for="input-prijs">Prijs:</label>
+        <input id="input-prijs"
+               [(ngModel)]="newProduct.prijs"
+               name="prijs"
+               required>
+      </li>
+      <li>
+        <label for="input-photo">Foto:</label>
+        <input id="input-photo"
+               [(ngModel)]="newProduct.foto"
+               name="photo"
+               required>
+      </li>
+      <li>
+        <button [disabled]="templateForm.invalid">Voeg product toe</button>
+      </li>
+      <li>
+        <pre>{{newProduct | json}}</pre>
+      </li>
+    </ol>
+  </form>
 
-name: {{name}}
-
-<input [(ngModel)]="name">
-
-<div [innerHTML]="name"></div>
-
-<!--{{query}}-->
-
-<hr>
-
-ingebouwde pipes:
-- lowercase/uppercase/titlecase
-- currency
-- number
-- percent
-- date
-- async (Promises/Observables)
-- json (debugdoeleinden)
-
-<hr>
-
-percent: {{percentage | percent}}<br>
-nu: {{nu | date: 'dd MMMM yyyy'}}
-
-<hr>
-
-<button (click)="changeName()">Verander naam</button>
-
-<button (click)="addProduct()">Voeg product toe</button>
+  <form [formGroup]="addProductForm"
+        (submit)="addProductReactive()">
+    <h2>Product toevoegen<br>(model-driven / ReactiveFormsModule)</h2>
+    <ol>
+      <li>
+        <label for="input-product">Product:</label>
+        <input id="input-product"
+               formControlName="product">
+        <span *ngIf="f.product.touched && f.product.invalid">*</span>
+        <span *ngIf="f.product.touched && f.product.errors?.required">Vul
+          dit veld in</span>
+        <span *ngIf="f.product.touched && f.product.errors?.pattern">Alleen
+          letters, cijfers en normale tekens graag</span>
+        <span *ngIf="f.product.touched && f.product.errors?.barbie">GEEN
+          BARBIE</span>
+      </li>
+      <li>
+        <label for="input-prijs">Prijs:</label>
+        <input id="input-prijs"
+               formControlName="prijs"
+               type="number">
+      </li>
+      <li>
+        <label for="input-photo">Foto:</label>
+        <input id="input-photo"
+               formControlName="photo">
+      </li>
+      <li>
+        <button [disabled]="addProductForm.invalid">Voeg product toe</button>
+      </li>
+      <li>
+        <pre>{{addProductForm.value | json}}</pre>
+      </li>
+    </ol>
+  </form>
+</div>
 
 <table>
   <thead>
