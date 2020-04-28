@@ -3,7 +3,8 @@ import { Product } from 'src/app/models/product';
 import {
   FormGroup,
   FormControl,
-  Validators
+  Validators,
+  FormArray
 } from '@angular/forms';
 import { notBarbieValidator } from './validators/barbie.validator';
 
@@ -27,6 +28,7 @@ export class AppComponent {
     ]),
     prijs: new FormControl(undefined, Validators.required),
     photo: new FormControl(undefined, Validators.required),
+    verwanteProducten: new FormArray([])
   });
 
   vrijmarktproducten: Product[] = [
@@ -52,6 +54,17 @@ export class AppComponent {
         'https://static.zoom.nl/04ABBF852B8BCB92CD776FE31637C85C-aftands-fietsie.jpg',
     },
   ];
+
+  constructor() {
+    let verwanteProducten = this.addProductForm.get('verwanteProducten') as FormArray;
+    for(let p of this.vrijmarktproducten) {
+      let group = new FormGroup({
+        productId: new FormControl(p.id),
+        selected: new FormControl()
+      });
+      verwanteProducten.push(group);
+    }
+  }
 
   addProductReactive() {
     this.vrijmarktproducten.push(this.addProductForm.value);

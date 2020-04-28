@@ -13,11 +13,11 @@ td img {
     margin-right: 50px;
 }
 
-input.ng-touched.ng-valid {
+input.ng-valid.ng-touched {
     background: lightblue;
     position: relative;
 }
-input.ng-touched.ng-invalid {
+input.ng-invalid.ng-touched {
     background: lightcoral;
 }
 button:disabled {

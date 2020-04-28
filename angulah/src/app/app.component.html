@@ -26,7 +26,7 @@
       <li>
         <label for="input-photo">Foto:</label>
         <input id="input-photo"
-               [(ngModel)]="newProduct.foto"
+               [(ngModel)]="newProduct.photo"
                name="photo"
                required>
       </li>
@@ -67,11 +67,23 @@
                formControlName="photo">
       </li>
       <li>
+        <label>Verwante producten:</label>
+
+        <ul formArrayName="verwanteProducten">
+          <li *ngFor="let product of vrijmarktproducten; let i = index" [formGroupName]="i">
+            <input type="hidden" formControlName="productId" [value]="product.id">
+            <input type="checkbox" formControlName="selected"> {{product.product}}
+          </li>
+        </ul>
+      </li>
+      <li>
         <button [disabled]="addProductForm.invalid">Voeg product toe</button>
       </li>
       <li>
         <pre>{{addProductForm.value | json}}</pre>
       </li>
+
+
     </ol>
   </form>
 </div>
