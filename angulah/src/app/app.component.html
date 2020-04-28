@@ -9,6 +9,22 @@ name: {{name}}
 
 <hr>
 
+ingebouwde pipes:
+- lowercase/uppercase/titlecase
+- currency
+- number
+- percent
+- date
+- async (Promises/Observables)
+- json (debugdoeleinden)
+
+<hr>
+
+percent: {{percentage | percent}}<br>
+nu: {{nu | date: 'dd MMMM yyyy'}}
+
+<hr>
+
 <button (click)="changeName()">Verander naam</button>
 
 <button (click)="addProduct()">Voeg product toe</button>
@@ -27,8 +43,8 @@ name: {{name}}
         [class.duur]="p.prijs > 20"
         (click)="p.prijs = p.prijs + 5">
       <td>{{p.id}}</td>
-      <td>{{p.product}}</td>
-      <td>{{p.prijs}}</td>
+      <td>{{p.product | camelcase}}</td>
+      <td>{{p.prijs | currency}}</td>
       <td><img [src]="p.photo"></td>
     </tr>
   </tbody>
