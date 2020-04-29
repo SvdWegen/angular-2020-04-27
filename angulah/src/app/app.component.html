@@ -1,10 +1,10 @@
 <div class="flex">
-  <form (submit)="addProductTemplateDriven()" #templateForm="ngForm">
+  <form (submit)="addProductTemplateDriven()" #templateForm="ngForm" id="add-product-form-template">
     <h2>Product toevoegen<br>(template-driven / FormsModule)</h2>
     <ol>
       <li>
-        <label for="input-product">Product:</label>
-        <input id="input-product"
+        <label for="input-product-template">Product:</label>
+        <input id="input-product-template"
                [(ngModel)]="newProduct.product"
                name="product"
                required
@@ -17,15 +17,15 @@
           letters, cijfers en normale tekens graag</span>
       </li>
       <li>
-        <label for="input-prijs">Prijs:</label>
-        <input id="input-prijs"
+        <label for="input-prijs-template">Prijs:</label>
+        <input id="input-prijs-template"
                [(ngModel)]="newProduct.prijs"
                name="prijs"
                required>
       </li>
       <li>
-        <label for="input-photo">Foto:</label>
-        <input id="input-photo"
+        <label for="input-photo-template">Foto:</label>
+        <input id="input-photo-template"
                [(ngModel)]="newProduct.photo"
                name="photo"
                required>
@@ -66,7 +66,7 @@
         <input id="input-photo"
                formControlName="photo">
       </li>
-      <li>
+      <!--<li>
         <label>Verwante producten:</label>
 
         <ul formArrayName="verwanteProducten">
@@ -75,7 +75,7 @@
             <input type="checkbox" formControlName="selected"> {{product.product}}
           </li>
         </ul>
-      </li>
+      </li>-->
       <li>
         <button [disabled]="addProductForm.invalid">Voeg product toe</button>
       </li>
