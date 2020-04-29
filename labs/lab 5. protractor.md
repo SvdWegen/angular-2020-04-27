@@ -42,7 +42,7 @@ Let's start by making a page object that reflects our page. We want to enter val
         return this.getReactiveFormButton().isEnabled();
     }
     ```
-Our object model is all set for now, let's use it in our other file, `e2e/contacts.e2e-spec.ts`.
+Our object model is all set for now, let's use it in our other file, `e2e/src/contacts.e2e-spec.ts`.
 1. Create the skeleton of our tests. Start the tests by navigating to our page.
     ```ts
     describe('Contacts page', () => {
